@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="Black">
+    <option name="sdkUUID" value="e3120a93-5aa3-4f80-b8a7-f9d867013098" />
+  </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="D:\env\anaconda3" project-jdk-type="Python SDK" />
 </project>
