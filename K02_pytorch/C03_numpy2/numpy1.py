@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 
 
-path = '/Users/ssl/Desktop/销项管理.png'
+path = './jk.png'
 im = Image.open(path)
 
 # (962, 678)
