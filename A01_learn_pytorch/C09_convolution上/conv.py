@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
-# Conv2d类
-# class torchn.nn.Conv2d(
+# Conv2d是touch.nn中提供的卷积方法，点击源码进去看参数说明
+# class torch.nn.Conv2d(
 # in_channels,  # 输入特征图的通道数
 # out_channels,  # 输出特征图的通道数
 # kernel_size,  # 卷积核的大小
