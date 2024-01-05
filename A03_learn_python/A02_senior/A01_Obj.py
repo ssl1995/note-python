@@ -19,6 +19,7 @@ ne_1 = NeuralNetwork(2, 3)
 
 ne_1.show_param()
 
+
 # 继承、也可以是多态
 class NeuralNetwork2(NeuralNetwork):
     def __init__(self, init_c, init_w, init_b):
