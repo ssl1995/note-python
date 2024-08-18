@@ -1,34 +1,67 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as Fun
+from torchsummary import summary
+from collections import OrderedDict
 
 
-# 神经网络模版
-class Model(nn.Module):
-    # 初始化
-    def __init__(self):
-        # 父类初始化
-        super(Model, self).__init__()
-        # 卷积层
-        # self.conv1 = nn.Conv2d(1, 2, 3)
-        # 全连接层
-        self.fc_1 = nn.Linear(10, 5, bias=False)
+class MyBlock(nn.Module):
+    def __init__(self,in_channel, out_channel):
+        super().__init__()
+        self.conv_1 = nn.Conv2d(in_channel,out_channel,3, padding=1)
+        self.bn_1 = nn.BatchNorm2d(out_channel)
+        self.relu = nn.ReLU()
+        self.conv_2 = nn.Conv2d(out_channel, out_channel, 3, padding=1)
+        self.bn_2 = nn.BatchNorm2d(out_channel)
 
-    # 前向传播
     def forward(self, x):
-        # 激活函数：relu
-        # x = Fun.relu(self.conv1(x))
+        x_1 = x
+        x = self.conv_1(x)
+        x = self.bn_1(x)
+        x = self.relu(x)
+        x = self.conv_2(x)
+        x = self.bn_2(x)
+        result = x + x_1
+        return result
 
-        x = self.fc_1(x)
+
+class MainNet(nn.Module):
+
+    def __init__(self):
+        super().__init__()
+        self.conv_1 = nn.Conv2d(3,32,3)
+        self.conv_2 = nn.Conv2d(32,64,3)
+
+        self.body = nn.Sequential(
+            OrderedDict([
+                ('block_1',MyBlock(64,64)),
+                ('block_2',MyBlock(64,64)),
+                ('block_3', MyBlock(64, 64)),
+                ('block_4', MyBlock(64, 64)),
+            ]
+
+            )
+        )
+
+        self.tail = nn.Sequential(
+            nn.Linear(64 * 220 * 220, 512),
+            nn.Linear(512, 10)
+        )
+
+    def forward(self, x):
+        x = self.conv_1(x)
+        x = self.conv_2(x)
+        x = self.body(x)
+        x = x.view(-1, 64*220*220)
+        x = self.tail(x)
         return x
 
 
+
 if __name__ == '__main__':
-    model = Model()
-    print(model)
-
-    input = torch.randn(10)
-
+    input = torch.rand((5,3,224,224))
+    # block = MyBlock(3,3)
+    model = MainNet()
     output = model(input)
-
-    print(output)
+    print(output.shape)
+    print(model)
+    summary(model, (3,224,224))
