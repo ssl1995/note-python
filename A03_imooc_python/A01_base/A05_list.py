@@ -1,16 +1,16 @@
 '''
 序列索引
+比如：列表(list)、元组(tuple)、字典(dict)、集合(set)
 py支持负数
-num[-1]: 从后王前数
+num[-1]: 从后往前数
 '''
 numbers = [10, 11, 12, 13, 14]
 # 左闭右开
-print(numbers[0:2])
-print(numbers[:2])
-
-print(numbers[:-2])
+print(numbers[0:2]) # [10, 11]
+print(numbers[:2]) # [10, 11]
+print(numbers[:-2]) # [10, 11, 12]
 # 步长是第三个数：为2
-print(numbers[0:4:2])
+print(numbers[0:4:2]) # [10, 12]
 
 '''
 序列相加和增删改查
