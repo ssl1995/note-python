@@ -165,3 +165,7 @@ log.txt
 
 /A04_imooc_pytorch/A04_pytorch/logs/
 /A04_imooc_pytorch/A04_pytorch/data/
+
+
+.idea/misc.xml
+.idea/note-python.iml
