@@ -25,3 +25,6 @@ fun_units = lambda layer: layer * 128
 res = fun_units(10)
 
 print(res)
+
+
+
