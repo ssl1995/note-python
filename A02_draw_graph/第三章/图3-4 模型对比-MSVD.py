@@ -17,13 +17,13 @@ metrics = {
 }
 
 # 可视化设置
-colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']  # 四组颜色
+colors = ['#2ecc71', '#3498db', '#e74c3c', '#9b59b6']  # 四组颜色
 x = np.arange(len(models))  # 模型位置
 width = 0.2  # 柱状图宽度
 
 # 创建 2x2 子图布局
 fig, axs = plt.subplots(2, 2, figsize=(16, 10))
-fig.suptitle('模型性能对比柱状图', fontsize=16)  # 修改主标题为中文
+fig.suptitle('MSVD数据集模型性能柱状图', fontsize=16)  # 修改主标题为中文
 
 # 绘制每个指标的柱状图
 for idx, (metric_name, values) in enumerate(metrics.items()):
