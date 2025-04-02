@@ -25,7 +25,8 @@ data = np.array([
 ])
 
 # 可视化参数
-colors = ['#4E79A7', '#59A14F', '#EDC948', '#F28E2B']  # 学术风格配色
+# colors = ['#4E79A7', '#59A14F', '#EDC948', '#F28E2B']  # 学术风格配色
+colors = ['#2ecc71', '#3498db', '#e74c3c', '#9b59b6']  # 指标颜色
 x = np.arange(len(models))  # 模型位置坐标
 width = 0.18  # 柱状图宽度
 

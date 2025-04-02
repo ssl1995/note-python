@@ -8,7 +8,7 @@ rcParams['font.sans-serif'] = ['SimHei']  # 使用黑体或其他支持中文的
 rcParams['axes.unicode_minus'] = False  # 解决负号 '-' 显示为方块的问题
 
 # 数据定义
-models = ['PGAHN(Ours)', 'ResNet-50', 'EfficientNet-B4', 'ViT-Base', 'YOLOv7']
+models = ['PGAHN(本文)', 'ResNet-50', 'EfficientNet-B4', 'ViT-Base', 'YOLOv7']
 metrics = {
     '参数量(M)': [15.1, 26.6, 21.3, 56.6, 46.9],
     'FLOP(G)': [3.1, 6.8, 5.9, 19.5, 16.2],

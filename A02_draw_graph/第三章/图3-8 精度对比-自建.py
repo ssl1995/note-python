@@ -1,4 +1,3 @@
-
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import rcParams
@@ -11,11 +10,11 @@ rcParams['axes.unicode_minus'] = False  # 解决负号 '-' 显示为方块的问
 models = ['PGAHN(Ours)', 'ResNet-50', 'EfficientNet-B4', 'ViT-Base', 'YOLOv7']
 metrics = ['准确率', '精确率', '召回率', 'F1值']
 data = np.array([
-    [93.7, 92.5, 89.1, 90.7],  # PGAHN
-    [79.8, 81.2, 68.3, 73.9],  # ResNet-50
-    [83.1, 84.7, 72.6, 78.0],  # EfficientNet-B4
-    [85.4, 86.1, 74.9, 80.1],  # ViT-Base
-    [87.7, 85.3, 80.2, 82.6]   # YOLOv7
+    [89.7, 89.7, 89.7, 89.7],  # PGAHN
+    [76.3, 76.3, 76.3, 76.3],  # ResNet-50
+    [80.2, 80.2, 80.2, 80.2],  # EfficientNet-B4
+    [83.6, 83.6, 83.6, 83.6],  # ViT-Base
+    [85.1, 85.1, 85.1, 85.1]  # YOLOv7
 ])
 
 # 可视化设置
@@ -31,13 +30,13 @@ ax = plt.gca()
 for i in range(len(metrics)):
     offset = width * (i - 1.5)  # 计算每组柱子的偏移量
     bars = ax.bar(x + offset, data[:, i], width,
-                 color=colors[i], edgecolor='white',
-                 label=metrics[i], alpha=0.9)
+                  color=colors[i], edgecolor='white',
+                  label=metrics[i], alpha=0.9)
 
     # 添加数据标签
     for bar in bars:
         height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width()/2., height,
+        ax.text(bar.get_x() + bar.get_width() / 2., height,
                 f'{height:.1f}%',
                 ha='center', va='bottom',
                 fontsize=9, color='black')
@@ -51,8 +50,8 @@ ax.grid(axis='y', linestyle='--', alpha=0.7)
 
 # 添加图例和标题
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1), frameon=False)
-plt.title('测试集精度模型对比柱状图',
-         fontsize=14, pad=20, fontweight='bold')
+plt.title('SATBTH数据集精度对比',
+          fontsize=14, pad=20, fontweight='bold')
 
 # 显示图表
 plt.tight_layout()
