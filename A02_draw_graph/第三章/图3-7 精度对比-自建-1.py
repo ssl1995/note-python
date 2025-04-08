@@ -5,17 +5,17 @@ from matplotlib import rcParams
 # 设置中文字体
 rcParams['font.sans-serif'] = ['SimHei']  # 使用黑体或其他支持中文的字体
 rcParams['axes.unicode_minus'] = False  # 解决负号 '-' 显示为方块的问题
-rcParams['font.size'] = 14
+rcParams['font.size'] = 26
 
 # 数据预处理
-models = ['PGAHN(本文)', 'ResNet-50', 'EfficientNet-B4', 'ViT-Base', 'YOLOv7']
+models = ['PGAHN(Ours)', 'ResNet-50', 'EfficientNet-B4', 'ViT-Base', 'YOLOv7']
 metrics = ['准确率', '精确率', '召回率', 'F1值']
 data = np.array([
-    [92.3, 90.8, 91.5, 91.9],  # PGAHN
-    [82.1, 83.5, 71.2, 76.8],  # ResNet-50
-    [85.6, 86.9, 75.4, 80.2],  # EfficientNet-B4
-    [87.9, 88.3, 77.8, 82.4],  # ViT-Base
-    [89.5, 87.2, 83.1, 84.9]  # YOLOv7
+    [89.7, 88.4, 87.9, 88.0],  # PGAHN
+    [76.3, 78.9, 65.1, 70.8],  # ResNet-50
+    [80.2, 82.1, 69.7, 75.3],  # EfficientNet-B4
+    [83.6, 84.2, 72.5, 77.9],  # ViT-Base
+    [85.1, 82.6, 78.4, 80.3]  # YOLOv7
 ])
 
 # 可视化设置
@@ -24,7 +24,7 @@ x = np.arange(len(models))  # 模型位置
 width = 0.2  # 柱状图宽度
 
 # 创建画布
-plt.figure(figsize=(14, 8), dpi=100)
+plt.figure(figsize=(18, 10), dpi=200)
 ax = plt.gca()
 
 # 绘制分组柱状图
@@ -40,19 +40,19 @@ for i in range(len(metrics)):
         ax.text(bar.get_x() + bar.get_width() / 2., height,
                 f'{height:.1f}%',
                 ha='center', va='bottom',
-                fontsize=9, color='black')
+                fontsize=17, color='black')
 
 # 坐标轴设置
 ax.set_xticks(x)
-ax.set_xticklabels(models, rotation=15, ha='right', fontsize=12)
-ax.set_ylabel('Score (%)', fontsize=12)
+ax.set_xticklabels(models, rotation=15, ha='right', fontsize=26)
+ax.set_ylabel('评价指标 (%)', fontsize=26,labelpad=15)
 ax.set_ylim(60, 100)  # 突出差异区间
 ax.grid(axis='y', linestyle='--', alpha=0.7)
 
 # 添加图例和标题
-plt.legend(loc='upper left', bbox_to_anchor=(1, 1), frameon=False)
-plt.title('INATURALIST数据集精度对比',
-          fontsize=14, pad=20, fontweight='bold')
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1), frameon=False,fontsize=26)
+plt.title('SATBTH数据集精度对比',
+          fontsize=26, pad=25, fontweight='bold')
 
 # 显示图表
 plt.tight_layout()
